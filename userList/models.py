@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 
 
@@ -19,6 +20,4 @@ class Job(models.Model):
     category = models.CharField(max_length=25)
     compensation = models.IntegerField()
     description = models.CharField(max_length=200)
-
-
-
+    photo = models.CharField(max_length=10)
