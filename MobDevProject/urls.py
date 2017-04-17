@@ -19,7 +19,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^userList/', include('userList.urls')),
-    url(r'^jobList/', include('jobList.urls')),
+    url(r'^jobList/', include('userList.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include('rest_framework.urls', namespace='rest_framework'))
 ]

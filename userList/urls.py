@@ -19,7 +19,9 @@ urlpatterns = [
         views.UserList.as_view(),
         name='user_list'),
 
-
+    url(r'^jobList/',
+        views.JobList.as_view(),
+        name='job_list'),
 
 ]
 
