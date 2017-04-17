@@ -18,9 +18,8 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^userList/', include('userList.urls')),
-    url(r'^jobList/', include('userList.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'^api/', include('rest_framework.urls', namespace='rest_framework'))
+    url(r'^api/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^$', include('userList.urls'))
 ]
 

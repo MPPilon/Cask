@@ -19,6 +19,20 @@ urlpatterns = [
         views.UserList.as_view(),
         name='user_list'),
 
+    # POST method: Creates a job
+    # /jobList/post
+    url(r'^jobList/post',
+        views.JobList.as_view(),
+        name='job_list_create'),
+
+    # DELETE method: Deletes a job
+    # /jobList/delete/<key>
+    url(r'^jobList/delete/(?P<key>[0-9]+)',
+        views.JobList.as_view(),
+        name='job_list_delete'),
+
+    # GET method: Gets the full job list
+    # /jobList/
     url(r'^jobList/',
         views.JobList.as_view(),
         name='job_list'),
