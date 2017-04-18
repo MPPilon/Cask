@@ -26,6 +26,14 @@ class JobList(APIView):
         job.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+    def put(self, request, job_id):
+        job = self.get_object(job_id)
+        serializer = JobSerializer(job, data=request.data)
+        if serializer.isvalid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class UserList(APIView):
 
