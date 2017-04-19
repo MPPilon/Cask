@@ -4,14 +4,14 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from userList.models import User, Job
-from userList.serializers import UserSerializer, JobSerializer
+from userList.serializers import UserSerializer, JobSerializer, FullJobSerializer
 
 
 class JobList(APIView):
 
     def get(self, request):
         jobs = Job.objects.all()
-        serializer = JobSerializer(jobs, many=True)
+        serializer = FullJobSerializer(jobs, many=True)
         return Response(serializer.data)
 
     def post(self, request):
@@ -29,7 +29,7 @@ class JobList(APIView):
     def put(self, request, job_id):
         job = self.get_object(job_id)
         serializer = JobSerializer(job, data=request.data)
-        if serializer.isvalid():
+        if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -66,7 +66,7 @@ class UserDetails(APIView):
     def put(self, request, user_id):
         user = self.get_object(user_id)
         serializer = UserSerializer(user, data=request.data)
-        if serializer.isvalid():
+        if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
